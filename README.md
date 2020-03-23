@@ -1,1 +1,1 @@
-# Ladning Page Template
+# Landing Page Template

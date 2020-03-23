@@ -1,1 +1,1 @@
-# html-starter
+# Ladning Page Template

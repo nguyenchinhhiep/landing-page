@@ -1,3 +1,54 @@
 //  Author: Nguyen Chinh Hiep
 //  Email: nguyenchinhhiep95@gmail.com
 //  Facebook: facebook.com/hiepnguyen1003
+
+.page-container {
+    header {
+        position: absolute;
+        z-index: 9999;
+        background: #fff;
+        top: 0;
+        left: 0;
+        width: 100%;
+
+        .header-top {
+            background-color: #fff;
+            padding: 10px 0;
+            color: $primary-text;
+
+            &, ul.contact-info, ul.social-media {
+                @include flex-box('space-between', 'center');
+            }
+
+            ul.contact-info {
+                > li:first-child {
+                    margin-right: 30px;
+                    @include flex-box('flex-start','center')
+                }
+                > li > i {
+                    margin-right: 5px;
+                }
+            }
+
+            ul.social-media {
+                > li > a {
+                    @include flex-box('center', 'center');
+                    margin: 0 15px;
+                    color: $primary-text;
+                    border-radius: 50%;
+                    font-size: 16px;
+                    display: inline-block;
+                    i {
+                        transition: all ease .3s;
+                    }
+                    &:hover {
+                        color: $active-color;
+                    }
+                }
+            }
+            span {
+                color: $primary-text;
+            }
+        }
+    }
+}

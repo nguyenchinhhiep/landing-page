@@ -6,10 +6,12 @@ const pug = require("gulp-pug");
 const autoprefixer = require("gulp-autoprefixer");
 const browserSync = require("browser-sync").create();
 const del = require("del");
+const wait = require('gulp-wait');
 const reload = browserSync.reload;
 
 const sassTask = function() {
   return src("src/sass/main.scss")
+    .pipe(wait(500))
     .pipe(sass().on("error", sass.logError))
     .pipe(
       autoprefixer({

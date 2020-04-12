@@ -50,5 +50,11 @@
                 color: $primary-text;
             }
         }
+        @media (max-width: 900px) {
+            .header-top {
+                display: none;
+            }
+        }
     }
+    
 }

@@ -1,25 +1,91 @@
 nav
     .nav-main.container
         .nav-toggle
-            span.bar
+            .toggler
+                span.bar
         a(href="./index.html").nav-logo
             span Landing
             |   Page
         .nav-menu
             ul.menu-main
-                li.menu-item
-                    a(href="#").menu-link Home
-                li.menu-item
-                    a(href="#").menu-link About
-                li.menu-item
-                    a(href="#").menu-link Services
-                li.menu-item
-                    a(href="#").menu-link Work
-                li.menu-item.has-submenu
-                    a(href="#").menu-link Pages
+                li
+                    a(href="#") Home
+                li
+                    a(href="#") About
+                li
+                    a(href="#") Services
+                li
+                    a(href="#") Work
+                li.has-sub
+                    a(href="#") Pages
                         i.arrow.fas.fa-chevron-down
-                li.menu-item.has-submenu
-                    a(href="#").menu-link Components   
-                        i.arrow.fas.fa-chevron-down         
+                    .sub-menu
+                        ul
+                            li
+                                a(href="#") Page 1
+                            li.has-sub
+                                a(href="#") Page 2
+                                    i.arrow.fas.fa-chevron-down
+                                .sub-menu
+                                    ul
+                                        li
+                                            a(href="#") Page 2.1
+                                        li
+                                            a(href="#") Page 2.2      
+                                        li
+                                            a(href="#") Page 2.3
+                                        li
+                                            a(href="#") Page 2.4
+                            li.has-sub
+                                a(href="#") Page 3
+                                    i.arrow.fas.fa-chevron-down
+                                .sub-menu
+                                        ul
+                                            li
+                                                a(href="#") Page 3.1
+                                            li
+                                                a(href="#") Page 3.2      
+                                            li
+                                                a(href="#") Page 3.3
+                                            li
+                                                a(href="#") Page 3.4
+                            li
+                                a(href="#") Page 4
+                li.has-sub
+                    a(href="#") Components   
+                        i.arrow.fas.fa-chevron-down
+                    .sub-menu
+                        ul
+                            li
+                                a(href="#") Component 1
+                            li.has-sub
+                                a(href="#") Component 2
+                                    i.arrow.fas.fa-chevron-down
+                                .sub-menu
+                                    ul
+                                        li
+                                            a(href="#") Component 2.1
+                                        li
+                                            a(href="#") Component 2.2      
+                                        li
+                                            a(href="#") Component 2.3
+                                        li
+                                            a(href="#") Component 2.4
+                            li.has-sub
+                                a(href="#") Component 3
+                                    i.arrow.fas.fa-chevron-down
+                                .sub-menu
+                                    ul
+                                        li
+                                            a(href="#") Component 3.1
+                                        li
+                                            a(href="#") Component 3.2      
+                                        li
+                                            a(href="#") Component 3.3
+                                        li
+                                            a(href="#") Component 3.4
+                            li
+                                a(href="#") Component 4       
             .get-started
                 button.btn.btn-primary Get Started
+    .nav-overlay

@@ -259,6 +259,7 @@
                     &.active {
 
                         .toggler {
+                            background: rgba(240,247,252,0.2);
 
                             span.bar {
                                 opacity: 0;
@@ -278,8 +279,6 @@
                                 transform: translateY(-50%) rotate(-45deg)
                             }
                         }
-
-
                     }
 
                 }
@@ -455,5 +454,18 @@
                 }
             }
         }  
+    }
+
+    @media (max-width: 600px) {
+        nav {
+
+            .nav-main {
+
+                .nav-menu {
+
+                    width: 300px;
+                }
+            }
+        }
     }
 }

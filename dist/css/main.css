@@ -894,28 +894,30 @@ body {
     .page-container nav .nav-main .nav-toggle {
       display: block;
       z-index: 5; }
-      .page-container nav .nav-main .nav-toggle.active .toggler span.bar {
-        opacity: 0;
-        visibility: hidden; }
-      .page-container nav .nav-main .nav-toggle.active .toggler::before, .page-container nav .nav-main .nav-toggle.active .toggler::after {
-        top: 50%;
-        -webkit-transform: translateY(-50%) rotate(0);
-        -moz-transform: translateY(-50%) rotate(0);
-        -ms-transform: translateY(-50%) rotate(0);
-        -o-transform: translateY(-50%) rotate(0);
-        transform: translateY(-50%) rotate(0); }
-      .page-container nav .nav-main .nav-toggle.active .toggler::before {
-        -webkit-transform: translateY(-50%) rotate(45deg);
-        -moz-transform: translateY(-50%) rotate(45deg);
-        -ms-transform: translateY(-50%) rotate(45deg);
-        -o-transform: translateY(-50%) rotate(45deg);
-        transform: translateY(-50%) rotate(45deg); }
-      .page-container nav .nav-main .nav-toggle.active .toggler::after {
-        -webkit-transform: translateY(-50%) rotate(-45deg);
-        -moz-transform: translateY(-50%) rotate(-45deg);
-        -ms-transform: translateY(-50%) rotate(-45deg);
-        -o-transform: translateY(-50%) rotate(-45deg);
-        transform: translateY(-50%) rotate(-45deg); }
+      .page-container nav .nav-main .nav-toggle.active .toggler {
+        background: rgba(240, 247, 252, 0.2); }
+        .page-container nav .nav-main .nav-toggle.active .toggler span.bar {
+          opacity: 0;
+          visibility: hidden; }
+        .page-container nav .nav-main .nav-toggle.active .toggler::before, .page-container nav .nav-main .nav-toggle.active .toggler::after {
+          top: 50%;
+          -webkit-transform: translateY(-50%) rotate(0);
+          -moz-transform: translateY(-50%) rotate(0);
+          -ms-transform: translateY(-50%) rotate(0);
+          -o-transform: translateY(-50%) rotate(0);
+          transform: translateY(-50%) rotate(0); }
+        .page-container nav .nav-main .nav-toggle.active .toggler::before {
+          -webkit-transform: translateY(-50%) rotate(45deg);
+          -moz-transform: translateY(-50%) rotate(45deg);
+          -ms-transform: translateY(-50%) rotate(45deg);
+          -o-transform: translateY(-50%) rotate(45deg);
+          transform: translateY(-50%) rotate(45deg); }
+        .page-container nav .nav-main .nav-toggle.active .toggler::after {
+          -webkit-transform: translateY(-50%) rotate(-45deg);
+          -moz-transform: translateY(-50%) rotate(-45deg);
+          -ms-transform: translateY(-50%) rotate(-45deg);
+          -o-transform: translateY(-50%) rotate(-45deg);
+          transform: translateY(-50%) rotate(-45deg); }
     .page-container nav .nav-main .nav-logo {
       z-index: 5; }
     .page-container nav .nav-main .nav-menu {
@@ -1048,6 +1050,10 @@ body {
       .page-container nav .nav-main .nav-menu .get-started {
         padding: 12px 0;
         margin-left: 0; } }
+
+@media (max-width: 600px) {
+  .page-container nav .nav-main .nav-menu {
+    width: 300px; } }
 
 .btn {
   padding: 8px 20px;

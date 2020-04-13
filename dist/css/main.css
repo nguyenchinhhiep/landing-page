@@ -890,7 +890,7 @@ body {
 @media (max-width: 900px) {
   .page-container nav {
     top: 0;
-    padding: 13px 25px; }
+    padding: 13px 5px; }
     .page-container nav .nav-main .nav-toggle {
       display: block;
       z-index: 5; }

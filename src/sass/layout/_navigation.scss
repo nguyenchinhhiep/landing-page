@@ -89,7 +89,7 @@
                 order: 1;
 
                 span {
-                    color: $active-color;
+                    color: $primary-active;
                 }
 
             }
@@ -133,7 +133,7 @@
                     &:hover {
 
                         > a {
-                            color: $active-color;
+                            color: $primary-active;
 
                             > i {
                                 transform: rotate(-180deg);
@@ -215,7 +215,7 @@
                             &:hover {
 
                                 > a {
-                                    color: $active-color;
+                                    color: $primary-active;
 
                                     i {
                                         transform: rotate(-270deg);
@@ -244,7 +244,7 @@
         }
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 992px) {
 
         nav {
             top: 0;
@@ -349,7 +349,7 @@
                             &:hover {
 
                                 > a {
-                                    color: $active-color;
+                                    color: $primary-active;
         
                                     > i {
                                         transform: rotate(0);
@@ -365,7 +365,7 @@
                         li.open {
 
                             > a {
-                                color: $active-color;
+                                color: $primary-active;
     
                                 > i {
                                     transform: rotate(-180deg);
@@ -433,7 +433,7 @@
                                     &.open {
 
                                         > a {
-                                            color: $active-color;
+                                            color: $primary-active;
 
                                             i {
                                                 transform: rotate(-180deg);

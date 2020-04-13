@@ -41,42 +41,102 @@ $(document).ready(function () {
     //     })
     // }
 
-    $('.menu-main li > a').click(function(e){
-        e.stopPropagation();
-        if($(window).width() < 900) {
-            const parent = $(this).parent();
-            parent.siblings('li').removeClass('open');
-            parent.siblings('li').children('.sub-menu').slideUp(400);
-            $(this).parent().toggleClass('open');
-            if(parent.hasClass('open')) {
-                $(this).siblings('.sub-menu').slideDown(400);
-            } else {
-                $(this).siblings('.sub-menu').slideUp(400);
+    
+    // Navigation Dropdown
+    const navigationDropdown = () => {
+
+        $('.menu-main li > a').click(function(e){
+            e.stopPropagation();
+            if($(window).width() < 900) {
+                const parent = $(this).parent();
+                parent.siblings('li').removeClass('open');
+                parent.siblings('li').children('.sub-menu').slideUp(400);
+                $(this).parent().toggleClass('open');
+                if(parent.hasClass('open')) {
+                    $(this).siblings('.sub-menu').slideDown(400);
+                } else {
+                    $(this).siblings('.sub-menu').slideUp(400);
+                }
             }
-        }
-    })
+        })
+    }  
 
     // Toggle Navigation Mobile
-    $('.nav-toggle').click(function(e) {
-        e.stopPropagation()
-        $(this).toggleClass('active');
-        $('.nav-menu').toggleClass('open')
-        $('.page-container').toggleClass('show-nav-overlay');
-        if($('.page-container').hasClass('show-nav-overlay')){
-            $('body').css('overflow','hidden');
-        } else {
-            $('body').removeAttr('style');
-        }
-    })
+    const toggleNavigation = () => {
+        $('.nav-toggle').click(function(e) {
+            e.stopPropagation()
+            $(this).toggleClass('active');
+            $('.nav-menu').toggleClass('open')
+            $('.page-container').toggleClass('show-nav-overlay');
+            if($('.page-container').hasClass('show-nav-overlay')){
+                $('body').css('overflow','hidden');
+            } else {
+                $('body').removeAttr('style');
+            }
+        })
+    
+    }
+    
+    // Set default background for hero items
+    const setHeroBackground = () => {
+        const getHeroItems = document.querySelectorAll('.hero .hero-item');
+        getHeroItems.forEach(item => {
+            const background = $(item).attr('data-background');
+            const overlayBg = $(item).children('.overlay-bg');
+            const bgUrl = `./../assets/images/${background}`;
+            const backgroundStyle = `linear-gradient(rgba(22, 28, 45, 0.75), rgba(22, 28, 45, 0.75)), url(${bgUrl})`
+            overlayBg.css({
+                'background': backgroundStyle,
+                'background-position': 'center',
+                'background-repeat': 'no-repeat',
+                'background-size': 'cover',
+            })
+        })
+    }
 
-    $(window).click(function(e){
-        e.stopPropagation()
-        if(e.target.className == 'nav-overlay'){
-            $('.nav-toggle').removeClass('active');
-            $('.nav-menu').removeClass('open');
-            $('.page-container').removeClass('show-nav-overlay');
-            $('body').removeAttr('style');
-        }
-    })
+    // Open Video Modals
 
+    const videoOverlay = () => {
+        const btnPlayVideos = document.querySelectorAll('.btn-play-video');
+        btnPlayVideos.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $('body').css('overflow','hidden');
+                const videoUrl = $(this).attr('href');
+                $('#video-overlay').addClass('show');
+                $('#video-overlay').find('.video-overlay-inner').append(`<iframe width="100%" height="100%" src=${videoUrl} frameborder="0" allowfullscreen></iframe>`)     
+            })
+        })
+    }
+
+    // Window close
+    const windowClose = () => {
+        $(window).click(function(e){
+            e.stopPropagation()
+            if(e.target.className == 'nav-overlay'){
+                $('.nav-toggle').removeClass('active');
+                $('.nav-menu').removeClass('open');
+                $('.page-container').removeClass('show-nav-overlay');
+                $('body').removeAttr('style');
+            }
+
+            if(e.target.className == 'video-overlay-close' || e.target.className == 'video-overlay show'){
+                $('.video-overlay').removeClass('show').find('iframe').remove();
+                $('body').removeAttr('style');
+            }
+        })
+
+    }
+
+    // Init
+    const init = () => {
+        windowClose();
+        navigationDropdown();
+        toggleNavigation();
+        setHeroBackground();
+        videoOverlay();
+    }
+    
+    init();
 });

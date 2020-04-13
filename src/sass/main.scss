@@ -10,14 +10,14 @@
 @import "vendors/slick-slider";
 
 // 3. Base stuff
-@import "base/reset", "base/typography", "base/common", "base/responsives", "base/animations";
+@import "base/reset", "base/typography", "base/common", "base/responsives", "base/animations", "base/utilities";
 
 // 4. Layout-related sections
 @import "layout/layout", "layout/header", "layout/footer",
   "layout/sidebar", "layout/navigation";
 
 // 5. Components
-@import "components/buttons";
+@import "components/buttons", "components/video-overlay";
 
 // 6. Page-specific styles
 @import "partials/hero";

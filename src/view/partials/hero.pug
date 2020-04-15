@@ -1,26 +1,32 @@
-section.hero
-    .hero-container
-        //- .hero-item.container(data-background='hero-bg-1.jpg')
-            .overlay-bg
-            .col-md-6
-                .item-content
-                    .item-title
-                        h1 Welcome To Landing Page
-                        p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque suscipit debitis nobis rerum repudiandae alias illum quas nostrum incidunt.
-                .item-button
-                    button.btn.btn-primary Get Started
-                    button.btn.btn-outline-primary Download Now
-            .col-md-6
-                .item-image
-                    img(src="./../assets/images/hero.png", alt="")
-        .hero-item.container(data-background='hero-bg-2.jpg')
-            .overlay-bg
-            .col-lg-8.mx-auto
-                .item-content
-                    .item-title.text-center
-                        h1 Welcome To Landing Page
-                        p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque suscipit debitis nobis rerum repudiandae alias illum quas nostrum incidunt.
-                .item-button.text-center
-                    a(href="https://www.youtube.com/embed/n3-ika75sLs").btn-play-video.text-white
-                        i.fas.fa-play
-                        |   Watch now!
+section.hero#hero
+    .hero-container#hero-slider
+        .slider-item
+            .hero-item(data-background='hero-bg-1.jpg')
+                .overlay-bg
+                .container.row
+                    .col-lg-7
+                        .item-content
+                            .item-title
+                                h1 Welcome To Landing Page
+                                p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque suscipit debitis nobis rerum repudiandae alias illum quas nostrum incidunt.
+                        .item-button
+                            button.btn.btn-primary Get Started
+                            button.btn.btn-outline-primary Download Now
+                    //- .col-md-6
+                    //-     .item-image
+                    //-         img(src="./../assets/images/hero.png", alt="")
+        .slider-item
+            .hero-item(data-background='hero-bg-2.jpg')
+                .overlay-bg
+                .container.row
+                    .col-lg-8.mx-auto
+                        .item-content
+                            .item-title.text-center
+                                h1 Welcome To Landing Page
+                                p Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque suscipit debitis nobis rerum repudiandae alias illum quas nostrum incidunt.
+                        .item-button.text-center
+                            a(href="https://www.youtube.com/embed/n3-ika75sLs").btn-play-video.text-white
+                                i.fas.fa-play
+                                |   Watch now
+                
+                

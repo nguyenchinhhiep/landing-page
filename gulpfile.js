@@ -1,5 +1,4 @@
 const { src, dest, series, parallel, watch } = require("gulp");
-const gulp = require("gulp");
 const sass = require("gulp-sass");
 const babel = require("gulp-babel");
 const pug = require("gulp-pug");

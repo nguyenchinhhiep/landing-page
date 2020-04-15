@@ -1,5 +1,5 @@
 .video-overlay {
-    padding: 10px;
+    padding: 30px;
     @include flex-box('center','center');
     position: fixed;
     z-index: -1;
@@ -15,7 +15,7 @@
     &.show {
         opacity: 1;
         visibility: visible;
-        z-index: 9999;
+        z-index: 99999999;
     }
 
     .video-overlay-inner {
@@ -29,9 +29,9 @@
             position: absolute;
             top: -15px;
             right: -15px;
-            height: 36px;
-            width: 36px;
-            line-height: 37px;
+            height: 30px;
+            width: 30px;
+            line-height: 30px;
             text-align: center;
             z-index: 9999;
             border-radius: 50%;

@@ -104,7 +104,17 @@ $(document).ready(function () {
         $('#video-overlay').find('.video-overlay-inner').append("<iframe width=\"100%\" height=\"100%\" src=".concat(videoUrl, " frameborder=\"0\" allowfullscreen></iframe>"));
       });
     });
-  }; // Window close
+    $(document).keyup(function (e) {
+      if (e.keyCode === 27) {
+        closeVideoModal();
+      }
+    });
+  };
+
+  function closeVideoModal() {
+    $('.video-overlay').removeClass('show').find('iframe').remove();
+    $('body').removeAttr('style');
+  } // Window close
 
 
   var windowClose = function windowClose() {
@@ -119,12 +129,30 @@ $(document).ready(function () {
       }
 
       if (e.target.className == 'video-overlay-close' || e.target.className == 'video-overlay show') {
-        $('.video-overlay').removeClass('show').find('iframe').remove();
-        $('body').removeAttr('style');
+        closeVideoModal();
       }
     });
-  }; // Init
+  }; // Hero Slider
 
+
+  var heroSlider = function heroSlider() {
+    var slick = $('#hero-slider');
+    slick.slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: false,
+      draggable: true,
+      arrows: false,
+      dots: true,
+      customPaging: function customPaging(slider, i) {
+        return ''; // Remove button, customize content of "li"
+      }
+    });
+  };
+
+  $('.hero-container').on('init', function (slick) {
+    console.log(slick);
+  }); // Init
 
   var init = function init() {
     windowClose();
@@ -132,6 +160,7 @@ $(document).ready(function () {
     toggleNavigation();
     setHeroBackground();
     videoOverlay();
+    heroSlider();
   };
 
   init();

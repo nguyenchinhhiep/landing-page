@@ -155,9 +155,101 @@ $(document).ready(function () {
           });    
     }
 
-    $('.hero-container').on('init', function(slick){
-        console.log(slick);
+    // Check if visible
+    const isVisible = (el, elClass, offset, callback) => {
+        /*** Based on http://ejohn.org/blog/learning-from-twitter/ ***/
+        var didScroll = false;
+        var this_top;
+        var height;
+        var top;
+        
+        if(!offset) { var offset = 0; }
+        $(window).scroll(function() {
+            didScroll = true;
+        });
+       
+        setInterval(function() {
+          if (didScroll) {
+            didScroll = false;
+            top = $(window).scrollTop() + $(window).height();
+       
+            $(el).each(function(i){
+              this_top = $(this).offset().top - offset;
+              height   = $(this).height();
+       
+              // Scrolled within current section
+              if (top >= this_top && !$(this).hasClass(elClass)) {
+                $(this).addClass(elClass);
+       
+                if (typeof callback == "function") callback(el);
+              }
+            });
+          }
+        }, 100);
+      }
+    //   isVisible
+    const onViewport = (el) => {
+            // Special bonus for those using jQuery
+            if (typeof jQuery === "function" && el instanceof jQuery) {
+                el = el[0];
+            }
+            var rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) /* or $(window).height() */
+                // rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
+            );
+    }
+
+    //   Animate when visible
+      const animateVisible = () => {
+        var didScroll;
+        const animateEL = document.querySelectorAll('[data-animate]');
+        $(window).on('scroll', function() {
+            didScroll = true;
+        })
+
+        setInterval(function() {
+            if(didScroll) {
+                didScroll = false;
+                animateEL.forEach(el => {
+                    const animationName = $(el).attr('data-animate');
+                    if(onViewport(el) && !el.classList.contains(animationName)) {
+                        el.classList.add(animationName)
+                    }
+                })
+            }
+        },100)
+        
+        
+      }
+      $(window).on('DOMContentLoaded load', function(){
+        const animateEL = document.querySelectorAll('[data-animate]');
+            animateEL.forEach(el => {
+                const animationName = $(el).attr('data-animate');
+                if(onViewport(el)) {
+                    el.classList.add(animationName);
+                }
+        })
     })
+
+
+
+
+
+    // Magnific Popup
+    const magnificPopup = () => {
+        $('.filter-content').magnificPopup({
+            delegate: 'a', // child items selector, by clicking on it popup will open
+            type: 'image',
+            gallery: {
+                enabled: true
+              },
+            // other options
+          });
+    }
+    
     // Init
     const init = () => {
         windowClose();
@@ -166,6 +258,8 @@ $(document).ready(function () {
         setHeroBackground();
         videoOverlay();
         heroSlider();
+        animateVisible();
+        magnificPopup();
     }
     
     init();

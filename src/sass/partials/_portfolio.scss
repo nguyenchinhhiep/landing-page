@@ -1,0 +1,82 @@
+.page-container {
+
+    .section-content {
+
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+            margin-top: 40px;
+
+            .filter-item {
+
+                a {
+                    display: block;
+                    padding: 5px 15px;
+                    color: $primary-text;
+                    font-size: 14px;
+                    font-weight: 600;
+                    letter-spacing: 1px;
+                    cursor: pointer;
+                }
+            }
+        }
+        .filter-content {
+
+            [class*="col-"] {
+                padding: 8px 15px;
+                margin-top: 24px;
+            }
+            .content-item {
+                overflow: hidden;
+                position: relative;
+                cursor: pointer;
+                transition: box-shadow ease .3s;
+
+                &:hover {
+                    box-shadow: rgba(0, 0, 0, 0.12) 0px 3px 20px 0px;
+
+                    .item-content {
+                        bottom: 0;
+                    }
+
+                }
+
+                .item-image {
+                    img {
+                        max-width: 100%;
+                        width: 100%;
+                        height: auto;
+                        border-radius: 5px;
+                    }
+                    
+                }
+
+                .item-content {
+                    position: absolute;
+                    bottom: -81px;
+                    left: 0;
+                    width: 100%;
+                    background-color: #fff;
+                    padding: 10px 15px;
+                    transition: bottom ease .3s;
+                    
+
+                    .text-title {
+                        font-weight: 600;
+                        font-size: 18px;
+                        color: $primary-title;
+                        margin-bottom: 5px;
+                    }
+
+                    .text-sub {
+                        font-size: 13px;
+                        color: $primary-text;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -38,6 +38,8 @@
     .col-#{$i}{
         flex-basis: 100%/12*$i;
         max-width: 100%/12*$i;
+        flex-grow: 0;
+        flex-shrink: 0;
     }
 }
 @each $p in(
@@ -51,6 +53,8 @@
             .col-#{nth($p,1)}-#{$i}{
                 flex-basis: 100%/12*$i;
                 max-width: 100%/12*$i;
+                flex-grow: 0;
+                flex-shrink: 0;
             }
         }
     }

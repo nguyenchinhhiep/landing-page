@@ -42,18 +42,24 @@ $(document).ready(function () {
   var navigationDropdown = function navigationDropdown() {
     $('.menu-main li > a').click(function (e) {
       e.stopPropagation();
+      console.log('hello');
 
-      if ($(window).width() < 900) {
-        var parent = $(this).parent();
-        parent.siblings('li').removeClass('open');
-        parent.siblings('li').children('.sub-menu').slideUp(400);
+      if ($(window).width() < 992) {
+        var _parent = $(this).parent();
+
+        _parent.siblings('li').removeClass('open');
+
+        _parent.siblings('li').children('.sub-menu').slideUp(400);
+
         $(this).parent().toggleClass('open');
 
-        if (parent.hasClass('open')) {
+        if (_parent.hasClass('open')) {
           $(this).siblings('.sub-menu').slideDown(400);
         } else {
           $(this).siblings('.sub-menu').slideUp(400);
         }
+      } else {
+        parent.siblings('li').removeClass('open');
       }
     });
   }; // Toggle Navigation Mobile
@@ -238,6 +244,58 @@ $(document).ready(function () {
       } // other options
 
     });
+  }; // Filter Catergory Portfolio
+
+
+  var isotope = function isotope() {
+    // init Isotope
+    var $grid = $('.filter-content').isotope({
+      itemSelector: '.element-item',
+      layoutMode: 'fitRows'
+    }); // bind filter button click
+
+    $('.portfolio-filter').on('click', '.filter-item', function () {
+      var filterValue = $(this).attr('data-filter'); // use filterFn if matches value
+
+      filterValue = filterValue;
+      $grid.isotope({
+        filter: filterValue
+      });
+    }); // change is-checked class on buttons
+
+    $('.portfolio-filter').each(function (i, buttonGroup) {
+      var $buttonGroup = $(buttonGroup);
+      $buttonGroup.on('click', '.filter-item', function () {
+        $buttonGroup.find('.is-checked').removeClass('is-checked');
+        $(this).addClass('is-checked');
+      });
+    });
+  }; // Fixed header when scroll down
+
+
+  var fixedHeader = function fixedHeader() {
+    var didScroll;
+    $(window).scroll(function (event) {
+      didScroll = true;
+    });
+    setInterval(function () {
+      if (didScroll) {
+        hasScrolled();
+        didScroll = false;
+      }
+    }, 100);
+
+    function hasScrolled() {
+      var st = $(window).scrollTop(); // If they scrolled down and are past the navbar, add class .nav-up.
+      // This is necessary so you never see what is "behind" the navbar.
+
+      if (st > 0) {
+        // Scroll Down
+        $('nav').addClass('nav-sticky');
+      } else {
+        $('nav').removeClass('nav-sticky');
+      }
+    }
   }; // Init
 
 
@@ -250,7 +308,12 @@ $(document).ready(function () {
     heroSlider();
     animateVisible();
     magnificPopup();
+    isotope();
+    fixedHeader();
   };
 
   init();
+  $(window).resize(function () {
+    $('.filter-content').isotope('reLayout');
+  });
 });

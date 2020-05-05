@@ -286,7 +286,7 @@ $(document).ready(function () {
     const fixedHeader = () => {
         var didScroll;
 
-        $(window).on('DOMContentLoaded load scroll',function (event) {
+        $(window).on('DOMContentLoaded load scroll', function (event) {
             didScroll = true;
         });
 
@@ -324,25 +324,25 @@ $(document).ready(function () {
     // Spy Scroll
     const spyScroll = () => {
         let didScroll;
-        $(window).on('DOMContentLoaded load scroll', function() {
+        $(window).on('DOMContentLoaded load scroll', function () {
             didScroll = true;
         })
 
-        setInterval(function(){
-            if(didScroll) {
+        setInterval(function () {
+            if (didScroll) {
                 hasScrolled();
                 didScroll = false;
             }
-        },100)
+        }, 100)
 
-        function hasScrolled () {
+        function hasScrolled() {
             const menuHeight = $('nav').outerHeight();
             const scrollPos = $(window).scrollTop() + menuHeight;
             $('.menu-main a.scroll-spy').each(function () {
                 const currentLink = $(this);
                 const refElement = $(currentLink.attr("href"));
 
-                if (refElement.position().top <= scrollPos  && refElement.position().top + refElement.height() > scrollPos) {
+                if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
                     $('.menu-main a.scroll-spy').removeClass("active");
                     currentLink.addClass("active");
                 }
@@ -357,27 +357,27 @@ $(document).ready(function () {
     // Smooth Scroll
     const smoothScroll = () => {
         // Add smooth scrolling to all links
-  $(".scroll-spy").on('click', function(event) {
+        $(".scroll-spy").on('click', function (event) {
 
-    // Make sure this.hash has a value before overriding default behavior
-    if (this.hash !== "") {
-      // Prevent default anchor click behavior
-      event.preventDefault();
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
+                // Prevent default anchor click behavior
+                event.preventDefault();
 
-      // Store hash
-      var hash = this.hash;
+                // Store hash
+                var hash = this.hash;
 
-      // Using jQuery's animate() method to add smooth page scroll
-      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 800, function(){
+                // Using jQuery's animate() method to add smooth page scroll
+                // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 800, function () {
 
-        // Add hash (#) to URL when done scrolling (default click behavior)
-        window.location.hash = hash;
-      });
-    } // End if
-  });
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+                });
+            } // End if
+        });
     }
 
     // Init

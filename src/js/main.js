@@ -318,10 +318,38 @@ $(document).ready(function () {
     // Wow Js
     const wow = () => {
         new WOW({
-            offset: 50,          
-            mobile: false,       
-            live: false     
+            offset: 0,
+            mobile: false,
+            live: false
         }).init();
+    }
+
+    // Spy Scroll
+    const spyScroll = () => {
+        $(window).on('DOMContentLoaded load scroll', function () {
+            const menuHeight = $('nav').outerHeight();
+            const scrollPos = $(document).scrollTop() + menuHeight;
+            const features = $('#features').position().top;
+            console.log(scrollPos,features);
+            $('.menu-main a.scroll-spy').each(function () {
+                const currentLink = $(this);
+                const refElement = $(currentLink.attr("href"));
+
+                if (refElement.position().top <= scrollPos  && refElement.position().top + refElement.height() > scrollPos) {
+                    $('.menu-main a.scroll-spy').removeClass("active");
+                    currentLink.addClass("active");
+                }
+                else {
+                    currentLink.removeClass("active");
+                }
+
+            })
+        })
+    }
+
+    // Smooth Scroll
+    const smoothScroll = () => {
+
     }
 
     // Init
@@ -337,6 +365,7 @@ $(document).ready(function () {
         isotope();
         fixedHeader();
         wow();
+        spyScroll()
     }
 
     init();

@@ -307,11 +307,35 @@ $(document).ready(function () {
 
   var wow = function wow() {
     new WOW({
-      offset: 50,
+      offset: 0,
       mobile: false,
       live: false
     }).init();
-  }; // Init
+  }; // Spy Scroll
+
+
+  var spyScroll = function spyScroll() {
+    $(window).on('DOMContentLoaded load scroll', function () {
+      var menuHeight = $('nav').outerHeight();
+      var scrollPos = $(document).scrollTop() + menuHeight;
+      var features = $('#features').position().top;
+      console.log(scrollPos, features);
+      $('.menu-main a.scroll-spy').each(function () {
+        var currentLink = $(this);
+        var refElement = $(currentLink.attr("href"));
+
+        if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+          $('.menu-main a.scroll-spy').removeClass("active");
+          currentLink.addClass("active");
+        } else {
+          currentLink.removeClass("active");
+        }
+      });
+    });
+  }; // Smooth Scroll
+
+
+  var smoothScroll = function smoothScroll() {}; // Init
 
 
   var init = function init() {
@@ -326,6 +350,7 @@ $(document).ready(function () {
     isotope();
     fixedHeader();
     wow();
+    spyScroll();
   };
 
   init();

@@ -42,24 +42,18 @@ $(document).ready(function () {
   var navigationDropdown = function navigationDropdown() {
     $('.menu-main li > a').click(function (e) {
       e.stopPropagation();
-      console.log('hello');
 
       if ($(window).width() < 992) {
-        var _parent = $(this).parent();
-
-        _parent.siblings('li').removeClass('open');
-
-        _parent.siblings('li').children('.sub-menu').slideUp(400);
-
+        var parent = $(this).parent();
+        parent.siblings('li').removeClass('open');
+        parent.siblings('li').children('.sub-menu').slideUp(400);
         $(this).parent().toggleClass('open');
 
-        if (_parent.hasClass('open')) {
+        if (parent.hasClass('open')) {
           $(this).siblings('.sub-menu').slideDown(400);
         } else {
           $(this).siblings('.sub-menu').slideUp(400);
         }
-      } else {
-        parent.siblings('li').removeClass('open');
       }
     });
   }; // Toggle Navigation Mobile
@@ -281,7 +275,7 @@ $(document).ready(function () {
 
   var fixedHeader = function fixedHeader() {
     var didScroll;
-    $(window).scroll(function (event) {
+    $(window).on('DOMContentLoaded load scroll', function (event) {
       didScroll = true;
     });
     setInterval(function () {
@@ -315,11 +309,20 @@ $(document).ready(function () {
 
 
   var spyScroll = function spyScroll() {
+    var didScroll;
     $(window).on('DOMContentLoaded load scroll', function () {
+      didScroll = true;
+    });
+    setInterval(function () {
+      if (didScroll) {
+        hasScrolled();
+        didScroll = false;
+      }
+    }, 100);
+
+    function hasScrolled() {
       var menuHeight = $('nav').outerHeight();
-      var scrollPos = $(document).scrollTop() + menuHeight;
-      var features = $('#features').position().top;
-      console.log(scrollPos, features);
+      var scrollPos = $(window).scrollTop() + menuHeight;
       $('.menu-main a.scroll-spy').each(function () {
         var currentLink = $(this);
         var refElement = $(currentLink.attr("href"));
@@ -331,11 +334,31 @@ $(document).ready(function () {
           currentLink.removeClass("active");
         }
       });
-    });
+    }
   }; // Smooth Scroll
 
 
-  var smoothScroll = function smoothScroll() {}; // Init
+  var smoothScroll = function smoothScroll() {
+    // Add smooth scrolling to all links
+    $(".scroll-spy").on('click', function (event) {
+      // Make sure this.hash has a value before overriding default behavior
+      if (this.hash !== "") {
+        // Prevent default anchor click behavior
+        event.preventDefault(); // Store hash
+
+        var hash = this.hash; // Using jQuery's animate() method to add smooth page scroll
+        // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top
+        }, 800, function () {
+          // Add hash (#) to URL when done scrolling (default click behavior)
+          window.location.hash = hash;
+        });
+      } // End if
+
+    });
+  }; // Init
 
 
   var init = function init() {
@@ -351,6 +374,7 @@ $(document).ready(function () {
     fixedHeader();
     wow();
     spyScroll();
+    smoothScroll();
   };
 
   init();

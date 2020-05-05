@@ -47,7 +47,6 @@ $(document).ready(function () {
 
         $('.menu-main li > a').click(function (e) {
             e.stopPropagation();
-            console.log('hello')
             if ($(window).width() < 992) {
                 const parent = $(this).parent();
                 parent.siblings('li').removeClass('open');
@@ -58,8 +57,6 @@ $(document).ready(function () {
                 } else {
                     $(this).siblings('.sub-menu').slideUp(400);
                 }
-            } else {
-                parent.siblings('li').removeClass('open');
             }
         })
     }
@@ -289,7 +286,7 @@ $(document).ready(function () {
     const fixedHeader = () => {
         var didScroll;
 
-        $(window).scroll(function (event) {
+        $(window).on('DOMContentLoaded load scroll',function (event) {
             didScroll = true;
         });
 
@@ -326,11 +323,21 @@ $(document).ready(function () {
 
     // Spy Scroll
     const spyScroll = () => {
-        $(window).on('DOMContentLoaded load scroll', function () {
+        let didScroll;
+        $(window).on('DOMContentLoaded load scroll', function() {
+            didScroll = true;
+        })
+
+        setInterval(function(){
+            if(didScroll) {
+                hasScrolled();
+                didScroll = false;
+            }
+        },100)
+
+        function hasScrolled () {
             const menuHeight = $('nav').outerHeight();
-            const scrollPos = $(document).scrollTop() + menuHeight;
-            const features = $('#features').position().top;
-            console.log(scrollPos,features);
+            const scrollPos = $(window).scrollTop() + menuHeight;
             $('.menu-main a.scroll-spy').each(function () {
                 const currentLink = $(this);
                 const refElement = $(currentLink.attr("href"));
@@ -344,12 +351,33 @@ $(document).ready(function () {
                 }
 
             })
-        })
+        }
     }
 
     // Smooth Scroll
     const smoothScroll = () => {
+        // Add smooth scrolling to all links
+  $(".scroll-spy").on('click', function(event) {
 
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
     }
 
     // Init
@@ -365,7 +393,8 @@ $(document).ready(function () {
         isotope();
         fixedHeader();
         wow();
-        spyScroll()
+        spyScroll();
+        smoothScroll();
     }
 
     init();

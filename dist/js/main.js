@@ -215,8 +215,8 @@ $(document).ready(function () {
         animateEL.forEach(function (el) {
           var animationName = $(el).attr('data-animate');
 
-          if (onViewport(el) && !el.classList.contains(animationName)) {
-            el.classList.add(animationName);
+          if (onViewport(el) && !el.classList.contains('animated')) {
+            el.classList.add('animated');
           }
         });
       }
@@ -249,9 +249,15 @@ $(document).ready(function () {
 
   var isotope = function isotope() {
     // init Isotope
-    var $grid = $('.filter-content').isotope({
-      itemSelector: '.element-item',
-      layoutMode: 'fitRows'
+    var $grid;
+    $('.filter-content').imagesLoaded({// options...
+    }, function () {
+      // images have loaded
+      $grid = $('.filter-content').isotope({
+        layoutMode: 'fitRows',
+        itemSelector: '.element-item',
+        percentPosition: true
+      });
     }); // bind filter button click
 
     $('.portfolio-filter').on('click', '.filter-item', function () {
@@ -296,6 +302,15 @@ $(document).ready(function () {
         $('nav').removeClass('nav-sticky');
       }
     }
+  }; // Wow Js
+
+
+  var wow = function wow() {
+    new WOW({
+      offset: 50,
+      mobile: false,
+      live: false
+    }).init();
   }; // Init
 
 
@@ -310,10 +325,8 @@ $(document).ready(function () {
     magnificPopup();
     isotope();
     fixedHeader();
+    wow();
   };
 
   init();
-  $(window).resize(function () {
-    $('.filter-content').isotope('reLayout');
-  });
 });

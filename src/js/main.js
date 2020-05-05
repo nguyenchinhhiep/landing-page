@@ -141,7 +141,6 @@ $(document).ready(function () {
         })
     }
 
-
     // Hero Slider
     const heroSlider = () => {
         const slick = $('#hero-slider');
@@ -218,8 +217,8 @@ $(document).ready(function () {
                 didScroll = false;
                 animateEL.forEach(el => {
                     const animationName = $(el).attr('data-animate');
-                    if (onViewport(el) && !el.classList.contains(animationName)) {
-                        el.classList.add(animationName)
+                    if (onViewport(el) && !el.classList.contains('animated')) {
+                        el.classList.add('animated')
                     }
                 })
             }
@@ -237,10 +236,6 @@ $(document).ready(function () {
         })
     })
 
-
-
-
-
     // Magnific Popup
     const magnificPopup = () => {
         $('.filter-content').magnificPopup({
@@ -256,11 +251,19 @@ $(document).ready(function () {
     // Filter Catergory Portfolio
     const isotope = () => {
         // init Isotope
-        var $grid = $('.filter-content').isotope({
-            itemSelector: '.element-item',
-            layoutMode: 'fitRows',
-            
-        });
+        var $grid;
+        $('.filter-content').imagesLoaded({
+            // options...
+        },
+            function () {
+                // images have loaded
+                $grid = $('.filter-content').isotope({
+                    layoutMode: 'fitRows',
+                    itemSelector: '.element-item',
+                    percentPosition: true,
+                });
+            }
+        );
 
         // bind filter button click
         $('.portfolio-filter').on('click', '.filter-item', function () {
@@ -269,6 +272,7 @@ $(document).ready(function () {
             filterValue = filterValue;
             $grid.isotope({ filter: filterValue });
         });
+
         // change is-checked class on buttons
         $('.portfolio-filter').each(function (i, buttonGroup) {
             var $buttonGroup = $(buttonGroup);
@@ -277,7 +281,7 @@ $(document).ready(function () {
                 $(this).addClass('is-checked');
             });
         });
-        
+
 
     }
 
@@ -311,6 +315,15 @@ $(document).ready(function () {
         }
     }
 
+    // Wow Js
+    const wow = () => {
+        new WOW({
+            offset: 50,          
+            mobile: false,       
+            live: false     
+        }).init();
+    }
+
     // Init
     const init = () => {
         windowClose();
@@ -323,8 +336,9 @@ $(document).ready(function () {
         magnificPopup();
         isotope();
         fixedHeader();
+        wow();
     }
 
     init();
-    $(window).resize(function(){ $('.filter-content').isotope('reLayout'); });
+
 });

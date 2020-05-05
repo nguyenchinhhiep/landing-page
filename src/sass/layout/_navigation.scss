@@ -25,6 +25,7 @@
             background: #fff;
             box-shadow: 0 1px 10px rgba(22, 28, 45, 0.15);
             top: 0;
+            padding: 0;
 
             .nav-main {
 
@@ -504,7 +505,7 @@
 
             &.nav-sticky {
 
-                padding: 13px 5px;
+                padding: 10px 5px;
 
                 .nav-main {
                     .nav-toggle.active {

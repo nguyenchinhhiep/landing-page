@@ -1043,7 +1043,8 @@ body {
   width: 100%;
   min-height: 100%;
   background: #fff;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  color: #8492a6; }
 
 /*!
  * animate.css -https://daneden.github.io/animate.css/
@@ -6762,6 +6763,52 @@ body {
 .text-white {
   color: #fff !important; }
 
+.d-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+
+.align-items-center {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.align-self-start {
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start; }
+
+.align-self-end {
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end; }
+
+.justify-content-center {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+
+.bg-light {
+  background-color: #f7f7f7 !important; }
+
+.text-primary {
+  color: #8492a6 !important; }
+
+.text-accent {
+  color: #00c9a7 !important; }
+
+.text-title {
+  color: #3c4858 !important; }
+
 .test-class {
   font-size: 20px; }
 
@@ -7721,3 +7768,66 @@ body {
   .page-container .element-item {
     width: 100%;
     height: 480px !important; } }
+
+.page-container .section-content [class*="col-"] {
+  margin-top: 24px;
+  padding: 8px 15px; }
+
+.page-container .section-content .pricing-item {
+  -webkit-box-shadow: 0 0 3px rgba(22, 28, 45, 0.15) !important;
+  -moz-box-shadow: 0 0 3px rgba(22, 28, 45, 0.15) !important;
+  box-shadow: 0 0 3px rgba(22, 28, 45, 0.15) !important;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-transition: all ease .2s;
+  -o-transition: all ease .2s;
+  -moz-transition: all ease .2s;
+  transition: all ease .2s; }
+  .page-container .section-content .pricing-item:hover {
+    -webkit-box-shadow: 0 10px 25px rgba(60, 72, 88, 0.15) !important;
+    -moz-box-shadow: 0 10px 25px rgba(60, 72, 88, 0.15) !important;
+    box-shadow: 0 10px 25px rgba(60, 72, 88, 0.15) !important; }
+    .page-container .section-content .pricing-item:hover .item-header {
+      background-color: #f7f7f7; }
+  .page-container .section-content .pricing-item .item-header {
+    padding: 24px 0;
+    border-bottom: 1px solid #e9ecef !important;
+    -webkit-transition: all ease .2s;
+    -o-transition: all ease .2s;
+    -moz-transition: all ease .2s;
+    transition: all ease .2s; }
+    .page-container .section-content .pricing-item .item-header h3 {
+      font-size: 20px;
+      color: #3c4858;
+      font-weight: 700;
+      letter-spacing: .5px;
+      line-height: 1.5;
+      margin-bottom: 12px; }
+    .page-container .section-content .pricing-item .item-header .price-content span:first-child {
+      font-weight: 700;
+      font-size: 16px; }
+    .page-container .section-content .pricing-item .item-header .price-content span:nth-child(2) {
+      font-size: 40px;
+      font-weight: 700; }
+    .page-container .section-content .pricing-item .item-header .price-content span:last-child {
+      font-size: 16px;
+      font-weight: 700; }
+  .page-container .section-content .pricing-item .item-body .feature-list {
+    padding: 24px; }
+    .page-container .section-content .pricing-item .item-body .feature-list .feature-item {
+      padding: 5px 0; }
+      .page-container .section-content .pricing-item .item-body .feature-list .feature-item i {
+        font-size: 10px;
+        color: #00c9a7;
+        margin-right: 16px; }
+      .page-container .section-content .pricing-item .item-body .feature-list .feature-item span {
+        font-size: 16px; }
+  .page-container .section-content .pricing-item .item-body .pricing-image {
+    padding: 0 30px;
+    text-align: center; }
+    .page-container .section-content .pricing-item .item-body .pricing-image img {
+      width: 180px;
+      height: 180px; }
+  .page-container .section-content .pricing-item .item-body .pricing-btn {
+    padding: 24px; }

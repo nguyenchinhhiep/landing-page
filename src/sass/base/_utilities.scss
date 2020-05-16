@@ -9,3 +9,39 @@
 .text-white {
     color: #fff !important
 }
+
+.d-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.align-self-start {
+    align-self: flex-start;
+}
+
+.align-self-end {
+    align-self: flex-end;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+ .bg-light {
+     background-color: #f7f7f7 !important;
+ }
+
+ .text-primary {
+     color: $primary-text !important;
+ }
+
+ .text-accent {
+     color: $primary-active !important;
+ }
+
+ .text-title {
+     color: $primary-title !important;
+ }

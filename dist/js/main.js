@@ -148,6 +148,14 @@ $(document).ready(function () {
         return ''; // Remove button, customize content of "li"
       }
     });
+    var navPrev = document.querySelector('#nav-left');
+    var navNext = document.querySelector('#nav-right');
+    navPrev.addEventListener('click', function () {
+      slick.slick('slickPrev');
+    });
+    navNext.addEventListener('click', function () {
+      slick.slick('slickNext');
+    });
   }; // Check if visible
 
 

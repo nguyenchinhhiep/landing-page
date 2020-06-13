@@ -152,6 +152,17 @@ $(document).ready(function () {
         return ''; // Remove button, customize content of "li"
       }
     });
+
+    const navPrev = document.querySelector('#nav-left');
+    const navNext = document.querySelector('#nav-right');
+
+    navPrev.addEventListener('click', function() {
+      slick.slick('slickPrev');
+    })
+    navNext.addEventListener('click', function() {
+      slick.slick('slickNext');
+    })
+    
   }
 
   // Check if visible

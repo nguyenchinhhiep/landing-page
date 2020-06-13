@@ -71,5 +71,30 @@
                 }
             }
         }
+
+        .slider-navigation {
+          #nav-left, #nav-right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            color: #fff;
+            border: 1px solid rgb(233, 236, 239);
+            position: absolute;
+            bottom: 25px;
+            border-radius: 4px;
+            cursor: pointer;
+          }
+
+          #nav-left {
+            left: 25px;
+          }
+
+          #nav-right {
+            right: 25px;
+          }
+
+        }
     }
 }

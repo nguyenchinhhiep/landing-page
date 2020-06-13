@@ -3,6 +3,18 @@
 //  Facebook: facebook.com/hiepnguyen1003
 
 .page-container {
+  .logo {
+    font-size: 21px;
+    color: #fff;
+    order: 1;
+    font-weight: 600;
+    letter-spacing: .5px;
+
+    span {
+        color: $primary-active;
+    }
+
+}
 
     &.show-nav-overlay {
 
@@ -40,7 +52,7 @@
                     }
                 }
 
-                .nav-logo {
+                .logo {
                     color: $primary-active;
 
                     span {
@@ -128,18 +140,7 @@
                 }
             }
 
-            .nav-logo {
-                font-size: 21px;
-                color: #fff;
-                order: 1;
-                font-weight: 600;
-                letter-spacing: .5px;
-
-                span {
-                    color: $primary-active;
-                }
-
-            }
+            
 
             .nav-menu {
                 order: 3;
